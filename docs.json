@@ -1,122 +1,133 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "CG文档中心",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3760F4",
+    "light": "#6b8bfc",
+    "dark": "#0228b0"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "使用指南",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "开始使用",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "guide/start/index",
+              "guide/start/quickstart"
             ]
           },
           {
-            "group": "Customization",
+            "group": "应用实例",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "guide/instance/env",
+              "guide/instance/base-operation",
+              "guide/instance/ssh",
+              "guide/instance/port",
+              "guide/instance/clone",
+              "guide/instance/update-config",
+              "guide/instance/save-image"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "模型",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "guide/model/use-model",
+              "guide/model/upload-model"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "数据",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "guide/data/base-operation",
+              "guide/data/upload",
+              "guide/data/down"
+            ]
+          },
+          {
+            "group": "费用",
+            "pages": [
+              "guide/expense/price",
+              "guide/expense/invoice",
+              "guide/expense/voucher",
+              "guide/expense/coupon"
+            ]
+          },
+          {
+            "group": "账号",
+            "pages": [
+              "guide/account/base",
+              "guide/account/realname",
+              "guide/account/member",
+              "guide/account/student"
+            ]
+          },
+          {
+            "group": "故障与维护",
+            "pages": [
+              "guide/maintenance/base"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
+        "tab": "费用相关",
+        "pages": [
+          "expense/price",
+          "expense/invoice",
+          "expense/voucher",
+          "expense/coupon"
+        ]
+      },
+      {
+        "tab": "镜像",
+        "pages": [
+          "image/introduction",
+          "image/operation"
+        ]
+      },
+      {
+        "tab": "常见问题",
+        "pages": [
+          "faq/qa1",
+          "faq/qa2",
+          "faq/qa3"
+        ]
+      },
+      {
+        "tab": "作者专区",
+        "pages": [
+          "author/app",
+          "author/image",
+          "author/model"
+        ]
+      },
+      {
+        "tab": "服务协议",
+        "pages": [
+          "agreements/agreements"
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/cg.png",
+    "dark": "/logo/cg.png"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "联系客服",
+        "href": "https://work.weixin.qq.com/kfid/kfc93f07e4d810f619d"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "label": "应用实例",
+      "href": "https://www.codewithgpu.com/app/deploy"
     }
   }
 }
