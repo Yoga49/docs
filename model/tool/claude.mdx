@@ -1,0 +1,73 @@
+---
+title: 'Claude Code'
+description: '实例中对数据进行压缩和解压'
+icon: 'toolbox'
+---
+
+<Tip>
+如无特殊需要，推荐使用`.tar`格式的包，因为该格式仅打包不会压缩，而多数情况图片和视频等都无法进一步压缩，因此仅打包不压缩是速度最快、消耗资源最少的打包和解压方式。
+</Tip>
+
+由于安装的zip、rar包等都只能解压或压缩某一种压缩包，这里提供一个小工具，支持解压格式：`.tar`， `.zip`， `.rar`， `.7z`，支持压缩/打包格式：`.zip`，`.tar`
+
+``` shell  lines icon="shell"
+# 下载安装工具
+curl -L -o /usr/bin/arc http://autodl-public.ks3-cn-beijing.ksyun.com/tool/arc && chmod +x /usr/bin/arc
+
+# 压缩/打包
+arc compress xxx.zip path/to/directory
+
+# 解压
+arc decompress xxx.zip 
+或者解压到指定目录
+arc decompress xxx.zip path/to/directory
+```
+
+有个别zip的压缩包使用上边的命令以及`unzip`命令都不能解压时，先检查文件大小，如果文件大小和源文件一样，那么尝试下面的命令解压：
+
+```shell  lines icon="shell"
+apt-get update && apt-get install -y fastjar
+jar xvf xxx.zip
+```
+
+**如果以上小工具使用异常**，换用常用的压缩解压软件：
+
+1. 压缩zip和解压zip
+
+   ```shell  lines icon="shell"
+   # 压缩。如果没有zip命令，安装命令：apt-get update && apt-get install -y zip
+   zip -r <自定义压缩包名称>.zip <待压缩目录的路径>
+   
+   # 解压。如果没有zip命令，安装命令：apt-get update && apt-get install -y unzip
+   unzip  <待解压压缩包名称>.zip -d <解压到哪个路径>
+   ```
+
+2. 压缩tar和解压tar
+
+   ```shell  lines icon="shell"
+   # 压缩（具体是指打包，未压缩，非常推荐这种方式，因为压缩/解压都耗时，但是图片等都无法再压缩）
+   tar -cf <自定义压缩包名称>.tar <待压缩目录的路径>
+   
+   # 解压
+   tar -xf <待解压压缩包名称>.tar -C <解压到哪个路径>
+   ```
+
+3. 压缩tar.gz和解压tar.gz
+
+   ```shell  lines icon="shell"
+   # 压缩
+   tar -czf <自定义压缩包名称>.tar <待压缩目录的路径>
+   
+   # 解压
+   tar -xzf <待解压压缩包名称>.tar -C <解压到哪个路径>
+   ```
+
+4. 解压rar
+
+   ```shell  lines icon="shell"
+   # 不推荐使用rar的包，linux下非常不常用
+   # 解压。如果没有zip命令，安装命令：apt-get update && apt-get install -y unrar
+   unrar e <待解压压缩包名称>.rar
+   ```
+
+   

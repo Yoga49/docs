@@ -1,88 +1,74 @@
 ---
 title: '发票'
-description: 'Text, title, and styling in standard markdown'
-icon: 'text-size'
+description: '开具发票流程'
+icon: 'file-invoice-dollar'
 ---
 
-## Titles
+<Note>提交发票审核后，电子发票会立即开票并发送至邮箱。自2024年9月起AutoDL不再支持线上开具纸质发票，如确需纸质发票，请扫码联系客服。</Note>
 
-Best used for section headers.
 
-```md
-## Titles
-```
+开具发票入口: www.autodl.com ->「控制台」->「费用」->「发票管理」。如果连续提交多张发票，系统会进行防止连票处理，开票时间会有些许延长。
 
-### Subtitles
+## 发票内容
 
-Best used for subsection headers.
+开票时，可自行选择开具以下发票内容：
 
-```md
-### Subtitles
-```
+1. \*生产生活服务\*云服务费
+2. \*生产生活服务\*云服务器服务费
+3. \*生产生活服务\*云服务器租赁服务费
+4. \*生产生活服务\*高性能计算服务费
+5. \*生产生活服务\*测试服务费
 
-<Tip>
+除此之外不支持其他发票内容
 
-Each **title** and **subtitle** creates an anchor and also shows up on the table of contents on the right.
+## 发票类型
 
-</Tip>
+1. 国内发票：可开企业增值税普通发票、增值税专用发票、个人发票。如开个人发票，发票抬头请填写真实姓名，统一社会信用代码请填写身份证号。
 
-## Text formatting
+2. 英文发票：样例见页面底部截图。开具英文发票时抬头主体填写自己的姓名或学校等名称，纳税人识别号（税号）请填写特殊字符串：`xxxxxxxxxxxxxxx`。默认开票金额以当前汇率换汇为美金，如需开具其他币种请联系客服。
 
-We support most markdown formatting. Simply add `**`, `_`, or `~` around text to format it.
+## 发票金额
 
-| Style         | How to write it   | Result          |
-| ------------- | ----------------- | --------------- |
-| Bold          | `**bold**`        | **bold**        |
-| Italic        | `_italic_`        | _italic_        |
-| Strikethrough | `~strikethrough~` | ~strikethrough~ |
+单次开票金额满10元可开票。
 
-You can combine these. For example, write `**_bold and italic_**` to get **_bold and italic_** text.
+AutoDL支持两种开票方式，一种是根据**消费账单开票**，另一种是根据**充值金额开票**。两者的区别有：
 
-You need to use HTML to write superscript and subscript text. That is, add `<sup>` or `<sub>` around your text.
+1. 开票金额逻辑不同。根据消费账单开票，开票金额为您勾选的消费账单总计金额，不可以自由调整开票金额。根据充值开票则充值后立即可开票，开票金额自定义填写（单张票满10元即可）
+2. 消费凭据不同。根据充值金额开票将提供发票和**充值证明**；根据账单金额开票，会提供您开票时选择的**账单明细**。充值证明与账单明细可以参考下方截图样例。
 
-| Text Size   | How to write it          | Result                 |
-| ----------- | ------------------------ | ---------------------- |
-| Superscript | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| Subscript   | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
+<Tip>按账单开票诀窍：如果充值后还未消费完，同时急需开票。那么可以选择包年包月进行消费，然后提交开票（系统会在10秒内开票），开票完成后立即将实例转按量计费（以及关机），此时包年包月的费用会退回到账户余额。最后注意：开票后不支持余额提现。</Tip>
 
-## Linking to pages
+## 附: 发票样例和盖章账单明细
 
-You can add a link by wrapping text in `[]()`. You would write `[link to google](https://google.com)` to [link to google](https://google.com).
+**发票样例：**
 
-Links to pages in your docs need to be root-relative. Basically, you should include the entire folder path. For example, `[link to text](/writing-content/text)` links to the page "Text" in our components section.
+数电发票专用发票样例：
 
-Relative links like `[link to text](../text)` will open slower because we cannot optimize them as easily.
+![2025-07-21-11-30-52-image](/images/expense/2025-07-21-11-30-52-image.png)
 
-## Blockquotes
+数电发票普通发票样例：
 
-### Singleline
+![2025-07-21-11-28-30-1753068499070](/images/expense/2025-07-21-11-28-30-1753068499070.jpg)
 
-To create a blockquote, add a `>` in front of a paragraph.
+**英文发票：**
 
-> Dorothy followed her through many of the beautiful rooms in her castle.
+![image-20220620141700209](/images/expense/image-20220620141700209.png)
 
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
-```
+**按账单金额开票将提供盖章消费明细：**
 
-### Multiline
+（随发票一起发送至邮箱）
 
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
+![image-20220613130332173](/images/expense/image-20220613130332173.png)
 
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-```
+**按充值金额开票将提供盖章充值金额说明：**
 
-### LaTeX
+（随发票一起发送至邮箱）
 
-Mintlify supports [LaTeX](https://www.latex-project.org) through the Latex component.
+如果您在开票时选择的PDF账单模板为：充值开票租赁云服务器，那么账单示例如下：
 
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
+![image-20221102111845854](/images/expense/image-20221102111845854.png)
 
-```md
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
-```
+如果您在开票时选择的PDF账单模板为：充值开票购买云服务器，那么账单示例如下，主要区别在于"租赁云服务器"文案调整为了"购买云服务器"：
+
+![2026-04-29-18-29-31-image](/images/expense/2026-04-29-18-29-31-image.png)
+

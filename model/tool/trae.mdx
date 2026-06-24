@@ -1,0 +1,177 @@
+---
+title: 'Trae'
+description: '使用公网网盘传输数据'
+icon: 'toolbox'
+---
+
+# 公网网盘(强烈推荐)
+
+**优点：**
+
+1. 支持实例和**阿里云盘、夸克网盘、百度网盘、对象存储OSS**等直接进行数据传输（实例上传到网盘，网盘下载到实例），方便下载数据到不同实例、备份实例重要数据、迁移实例。阿里云盘在海外的传输速度依然很快，如果您在海外使用AutoDL非常推荐～
+2. 相比本地和实例之间传输，速度快且稳定。
+3. 和其他人共享数据。
+
+**缺点：**
+
+1. 需要额外配置授权算一个缺点 :)
+
+<Tip>
+数据安全：AutoDL通过您设置的独立密码对个人信息进行加密，加密后的个人信息只有通过您的密码才能解密，包括AutoDL也无法解密。详细实现方法请看文档最下方。
+</Tip>
+
+AutoDL中公网网盘的实现可看作三方网盘客户端（叫做`AutoPanel`），和官方客户端的不同有：该工具为Server/Brower架构（类比JupyterLab理解，Server可以不在本地电脑，但可以在本地浏览器使用）。架构如下：
+
+![image-20220325102905470](/images/data/netdisk/image-20220325102905470.png)
+
+从图中可以看出：与官方客户端不同，**AutoPanel的Server启动在哪台主机，那么就由该主机和网盘发生上传下载交互，和浏览器所在主机无关**。因此您可以更灵活的将AutoPanel的Server启动在本地电脑、AutoDL的实例(已默认启动)、或其他您自己的服务器当中，然后通过Server提供的访问地址在浏览器完成操作。
+
+## 使用方法
+
+### Step.1：打开AutoPanel
+
+租用实例开机后，在访问实例一栏找到「AutoPanel」入口，点击进入后打开「公网网盘」。
+
+![image_20250328104642](/images/data/netdisk/image_20250328104642.png)
+
+### Step.2：授权
+
+第一步需要设置独立访问密码，该密码非常重要（更复杂更安全），您接下来授权的网盘个人账户信息均通过该密码进行加密。如**忘记密码**则需重新初始化。
+
+![image_20250325153411](/images/data/netdisk/image_20250325153411.png)
+
+<Tip>
+通过您设置的独立密码加密后的个人信息只有通过您的密码才能解密，包括AutoDL也无法解密。
+</Tip>
+
+#### 阿里云盘
+
+<Tip>
+**阿里云盘在2024年7月左右对三方应用进行了限制，需要购买三方权益包才能获得良好的上传下载速度，具体请参考<a href="https://zhp3k52owb.feishu.cn/wiki/Uv5Lw1mfsij1cHkLxWYcYWJonIt?from=from_copylink" target="_blank">文档</a>，请根据自己的需求使用阿里云盘。**
+</Tip>
+
+选择阿里云盘，然后使用阿里云盘的APP扫码授权登录。
+
+![image_20250328112239](/images/data/netdisk/image_20250328112239.png)
+
+#### 夸克网盘
+
+<Tip>
+ **夸克网盘需要购买会员才能获得良好的上传下载速度，请自行在夸克网盘中购买。**
+</Tip>
+
+浏览器登录[夸克网盘](https://pan.quark.cn/)网页版本，按F12打开浏览器“调试”，选中“Network”，随意在左侧选择请求，找到携带 Cookie 参数复制填写对应位置。
+
+![image_20250427162520](/images/data/netdisk/image_20250427162520.png)
+
+![image_20250328113215](/images/data/netdisk/image_20250328113215.png)
+
+#### 百度网盘
+
+<Tip>
+**百度网盘由于规则调整，不再支持个人认证及个人创建应用功能，需要企业认证才可开通应用，因此不再推荐使用百度网盘。**
+</Tip>
+
+登录<a href="https://pan.baidu.com" target="_blank">百度网盘</a>后，<a href="https://pan.baidu.com/union/console/applist?from=person" target="_blank">创建应用</a>（如果您没有进行过百度的认证可能创建失败，需先完成[认证](https://pan.baidu.com/union/apply?)），创建完成后获取AppKey和SecretKey。以下应用名称推荐填写AutoDL，以免不必要的麻烦。
+
+![image-20220329182233629](/images/data/netdisk/image-20220329182233629.png)
+
+![image-20220322114614815](/images/data/netdisk/image-20220322114614815.png)
+
+在AutoPanel点击添加授权，输入AppKey和SecretKey后，点击获取Access Token将打开百度网盘的网页，将其返回的Token粘贴过来即可完成授权。
+
+![image_20250328114909](/images/data/netdisk/image_20250328114909.png)
+
+#### OSS对象存储
+
+支持MinIO、阿里云OSS、腾讯云OSS和兼容S3协议的OSS。
+
+![image_20250328114715](/images/data/netdisk/image_20250328114715.png)
+
+**如果您使用阿里云OSS**，那么Address、Bucket、Region参数举例：
+```
+Address：oss-cn-beijing.aliyuncs.com  (注意地址中不要包含桶的信息)
+Bucket：test-bucket
+Region：cn-beijing
+```
+**如果您使用腾讯COS**，那么Address、Bucket、Region参数举例：
+```
+Address：cos.ap-beijing.myqcloud.com
+Bucket:  test-bucket
+region：ap-beijing
+```
+**如果您使用MinIO**，那么Address、Bucket参数举例：
+```
+Address: http://116.172.92.17:9000
+Bucket: test-bucket
+```
+### Step.3：文件浏览/上传/下载
+
+<Tip>
+如果是超过10GB以上的大文件在上传时可能需要花几十秒到几分钟不等的时间计算文件Hash值，计算完成后才会开始上传。另外计算Hash值的效率与cpu/内存相关，如果使用了**无卡模式**，该过程会更慢。请耐心等待～
+</Tip>
+
+选中网盘后可以浏览网盘中的文件，点击下载可以下载至本地（实例中）。固定下载到实例/root/autodl-tmp下，下载完成后可以自行移动。
+
+![image_20250328145600](/images/data/netdisk/image_20250328145600.png)
+
+点击上传按钮则可以上传本地（实例中）的文件至网盘。
+
+![image_20250328145721](/images/data/netdisk/image_20250328145721.png)
+
+同时可存在多个上传和下载文件任务，他们将排队进行上传下载，在右侧「传输任务」中可查看。
+
+![image_20250328145757](/images/data/netdisk/image_20250328145757.png)
+
+## 功能说明
+
+1. 同时支持多个网盘的授权管理。
+
+2. 阿里云盘和百度网盘均支持断点下载，断点上传正在支持中。
+
+3. 阿里云盘支持秒传。
+
+4. 上传下载速度一般为5~20MB/s，具体与当时网络负载有关（百度网盘、夸克网盘与会员有关，阿里云盘与第三方权益包有关。）
+
+5. 网盘官方关键限制说明：
+   
+   ```
+   一. 百度网盘：
+   1.速度限制：与会员等级相关。实测非会员下载1MB/s, 上传10MB/s。会员上传下载10MB/s+
+   2.上传路径限制：只能上传文件至[我的应用数据(部分账户叫apps)]目录，其他目录无权限。下载时无路径限制。
+   3.上传文件大小限制：
+    > 普通用户单个上传文件大小上限为4GB
+    > 会员用户单个上传文件大小上限为10GB
+    > 超级会员用户单个上传文件大小上限为20GB
+   
+   二. 阿里云盘：
+    1.上传文件大小限制
+     > 普通用户单个上传文件大小上限为100GB
+     > 会员用户单个上传文件大小上限为200GB
+     > 超级会员用户单个上传文件大小上限为1TB
+   ```
+## 自动授权
+
+上述授权过程需要在每个新创建的实例中重复添加，如果您希望只需添加授权一次，后续创建的实例均自动使用该授权，那么可以登录 www.autodl.com, 在「控制台」的「设置」菜单下托管授权信息到AutoDL，由AutoDL帮您完成添加授权：
+
+![image_20250328154616](/images/data/netdisk/image_20250328154616.png)
+
+## 安全
+
+AutoPanel的安全设计目标是：即使最糟糕的情况其他人拿走了您电脑上的配置信息，如果没有您的独立密码，也依然无法通过该数据访问您的网盘。
+
+### 加密实现机制
+
+在您授权后AutoPanel将获取到网盘的Access Token等相关信息，该信息将使用您设置的独立密码按以下方式进行加密：
+
+1. 在前后端传输时, 使用加盐摘要算法(sha1 + salt)对您设置的独立密码计算得到一串hash值（该Hash值在登录后用作于前后端的鉴权Token，请勿泄露给其他人）
+2. 然后通过对该Hash值进行摘要/循环式移位/线性转换得到32位AESKey
+3. 使用AESKey作为AES-256算法Key，对您授权的网盘访问数据(Access Token等)进行计算，得到AESMiddleOutput
+4. 使用内置的线性转换生成AESKey2,作为AES-256算法Key，对AESMiddleOutput进行加密运算，得到AESFinalOutput
+5. 使用Non Standard Encoding Base64对AESFinalOutput进行运算，结果写入AutoPanel Server所在主机\{\{cache_dir\}\}/.autodl/autopanel.security.db 文件中存储，该文件为AutoPanel运行中记录的唯一敏感数据文件，即使发给其他用户，除了使用您的独立密码均无法解密，包括AutoPanel开发者也无法解密
+6. 最后AutoPanel的接口做了防暴力破解，连续输错密码会受到限制
+
+关于AES：
+
+> AES is available in many different encryption packages, and is the first (and only) publicly accessible cipher approved by the U.S. National Security Agency (NSA) for top secret information when used in an NSA approved cryptographic module (see Security of AES, below).
+> [WIKI](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)

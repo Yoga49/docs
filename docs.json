@@ -7,50 +7,25 @@
     "light": "#6b8bfc",
     "dark": "#0228b0"
   },
+  "icons":{
+    "library": "fontawesome"
+  },
   "favicon": "/favicon.png",
   "navigation": {
     "tabs": [
       {
-        "tab": "使用指南",
-        "groups": [
+        "tab": "产品简介",
+        "pages": [
           {
-            "group": "开始使用",
+            "group": "简介",
             "pages": [
-              "guide/start/index",
-              "guide/start/quickstart"
-            ]
-          },
-          {
-            "group": "应用实例",
-            "pages": [
-              "guide/instance/env",
-              "guide/instance/base-operation",
-              "guide/instance/ssh",
-              "guide/instance/port",
-              "guide/instance/clone",
-              "guide/instance/update-config",
-              "guide/instance/save-image"
-            ]
-          },
-          {
-            "group": "模型",
-            "pages": [
-              "guide/model/use-model",
-              "guide/model/upload-model"
-            ]
-          },
-          {
-            "group": "数据",
-            "pages": [
-              "guide/data/base-operation",
-              "guide/data/upload",
-              "guide/data/down"
+              "guide/start/index"
             ]
           },
           {
             "group": "费用",
             "pages": [
-              "guide/expense/price",
+              "guide/expense/deposit",
               "guide/expense/invoice",
               "guide/expense/voucher",
               "guide/expense/coupon"
@@ -74,27 +49,143 @@
         ]
       },
       {
-        "tab": "费用相关",
-        "pages": [
-          "expense/price",
-          "expense/invoice",
-          "expense/voucher",
-          "expense/coupon"
+        "tab": "应用使用指南",
+        "groups": [
+          {
+            "group": "开始使用",
+            "pages": [
+              "app/start/index",
+              "app/start/quickstart"
+            ]
+          },
+          {
+            "group": "应用实例",
+            "pages": [
+              "app/instance/env",
+              "app/instance/base-operation",
+              "app/instance/jupyterlab",
+              "app/instance/autopanel",
+              "app/instance/ssh",
+              "app/instance/port",
+              "app/instance/clone",
+              "app/instance/update-config",
+              "app/instance/image"
+            ]
+          },
+          {
+            "group": "模型&数据",
+            "pages": [
+              "app/data/data",
+              "app/data/use-model",
+              "app/data/upload",
+              "app/data/download",
+              "app/data/netdisk",
+              "app/data/scale",
+              "app/data/arc"
+            ]
+          },
+          {
+            "group": "应用API",
+            "pages": [
+              "app/api/api"
+            ]
+          },
+          {
+            "group": "计费",
+            "pages": [
+              "app/expense/price"
+            ]
+          },
+          {
+            "group": "常见问题",
+            "pages": [
+              "app/qa/qa1"
+            ]
+          }
         ]
       },
       {
-        "tab": "镜像",
-        "pages": [
-          "image/introduction",
-          "image/operation"
+        "tab": "大模型使用指南",
+        "groups": [
+          {
+            "group": "开始使用",
+            "pages": [
+              "model/start/index",
+              "model/start/quickstart"
+            ]
+          },
+          {
+            "group": "API调用示例",
+            "pages": [
+              "model/model/deepseek",
+              "model/model/glm",
+              "model/model/qwen",
+              "model/model/minimax",
+              "model/model/kimi",
+              "model/model/hy",
+              "model/model/doubao",
+              "model/model/hailuo",
+              "model/model/vidu",
+              "model/model/kling",
+              "model/model/anthropic",
+              "model/model/openai",
+              "model/model/gemini"
+            ]
+          },
+          {
+            "group": "客户端/开发工具",
+            "pages": [
+              "model/tool/claude",
+              "model/tool/codex",
+              "model/tool/cursor",
+              "model/tool/trae",
+              "model/tool/cherry",
+              "model/tool/ccswitch"
+            ]
+          },
+          {
+            "group": "Agent",
+            "pages": [
+              "model/agent/openclaw",
+              "model/agent/hermes"
+            ]
+          },
+          {
+            "group": "计费",
+            "pages": [
+              "model/expense/price"
+            ]
+          },
+          {
+            "group": "常见问题",
+            "pages": [
+              "model/qa/qa1"
+            ]
+          }
         ]
       },
       {
-        "tab": "常见问题",
-        "pages": [
-          "faq/qa1",
-          "faq/qa2",
-          "faq/qa3"
+        "tab": "镜像使用指南",
+        "groups": [
+          {
+            "group": "开始使用",
+            "pages": [
+              "image/start/index",
+              "image/start/quickstart"
+            ]
+          },
+          {
+            "group": "计费",
+            "pages": [
+              "image/expense/price"
+            ]
+          },
+          {
+            "group": "常见问题",
+            "pages": [
+              "image/qa/qa1"
+            ]
+          }
         ]
       },
       {
@@ -102,7 +193,8 @@
         "pages": [
           "author/app",
           "author/image",
-          "author/model"
+          "author/model",
+          "author/reward"
         ]
       },
       {
@@ -114,8 +206,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/cg.png",
-    "dark": "/logo/cg.png"
+    "light": "/logo/art.png",
+    "dark": "/logo/art.png"
   },
   "navbar": {
     "links": [

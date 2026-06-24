@@ -1,110 +1,34 @@
 ---
 title: "故障赔偿"
-description: "Reusable, custom snippets to keep content in sync"
-icon: "recycle"
+description: "故障赔偿方案"
+icon: "ban-bug"
 ---
 
-import SnippetIntro from '/snippets/snippet-intro.mdx';
+## 应用实例宕机
 
-<SnippetIntro />
+确认条件：实例状态为已关机-意外宕机且无法自行开机。（如因程序OOM导致的意外宕机，非机器硬件原因，不在赔偿范围）
 
-## Creating a custom snippet
+赔偿标准：以上一次开机到宕机时刻计算补偿时长，24小时封顶。赔偿代金券金额=时长(小时) × 实例单价(元/小时)，如果是包卡，那么单价为包卡金额除以包卡时长计算得到时价。
 
-**Pre-condition**: You must create your snippet file in the `snippets` directory.
+## 网络故障
 
-<Note>
-  Any page in the `snippets` directory will be treated as a snippet and will not
-  be rendered into a standalone page. If you want to create a standalone page
-  from the snippet, import the snippet into another file and call it as a
-  component.
-</Note>
+确认条件：实例网络异常（非用户本地到实例线路原因，如开VPN导致线路异常）
 
-### Default export
+赔偿标准：发生异常的总时长(分钟) × 2，结果向上取整为小时。赔偿代金券金额=时长(小时) × 实例单价(元/小时)，如果是包卡，那么单价为包卡金额除以包卡时长计算得到时价。
 
-1. Add content to your snippet file that you want to re-use across multiple
-   locations. Optionally, you can add variables that can be filled in via props
-   when you import the snippet.
+## 系统盘故障
 
-```mdx snippets/my-snippet.mdx
-Hello world! This is my content I want to reuse across pages. My keyword of the
-day is {word}.
-```
+如果由于主机故障或硬盘故障等原因，造成应用实例数据全部损坏丢失，平台将赔偿该实例历史消费的所有费用。但由于用户缩容系统盘造成的文件系统损坏不在故障赔偿范围内，请谨慎缩容系统盘文件系统大小。
 
-<Warning>
-  The content that you want to reuse must be inside the `snippets` directory in
-  order for the import to work.
-</Warning>
 
-2. Import the snippet into your destination file.
+## 其他情形
 
-```mdx destination-file.mdx
----
-title: My title
-description: My Description
----
+以下情形不在赔偿范围内：
 
-import MySnippet from '/snippets/path/to/my-snippet.mdx';
-
-## Header
-
-Lorem impsum dolor sit amet.
-
-<MySnippet word="bananas" />
-```
-
-### Reusable variables
-
-1. Export a variable from your snippet file:
-
-```mdx snippets/path/to/custom-variables.mdx
-export const myName = 'my name';
-
-export const myObject = { fruit: 'strawberries' };
-```
-
-2. Import the snippet from your destination file and use the variable:
-
-```mdx destination-file.mdx
----
-title: My title
-description: My Description
----
-
-import { myName, myObject } from '/snippets/path/to/custom-variables.mdx';
-
-Hello, my name is {myName} and I like {myObject.fruit}.
-```
-
-### Reusable components
-
-1. Inside your snippet file, create a component that takes in props by exporting
-   your component in the form of an arrow function.
-
-```mdx snippets/custom-component.mdx
-export const MyComponent = ({ title }) => (
-  <div>
-    <h1>{title}</h1>
-    <p>... snippet content ...</p>
-  </div>
-);
-```
-
-<Warning>
-  MDX does not compile inside the body of an arrow function. Stick to HTML
-  syntax when you can or use a default export if you need to use MDX.
-</Warning>
-
-2. Import the snippet into your destination file and pass in the props
-
-```mdx destination-file.mdx
----
-title: My title
-description: My Description
----
-
-import { MyComponent } from '/snippets/custom-component.mdx';
-
-Lorem ipsum dolor sit amet.
-
-<MyComponent title={'Custom title'} />
-```
+1. 实例状态正常（运行中），由于未开后台运行等导致程序提前退出。
+2. 用户程序原因导致的显存未正确释放、内存未正确释放等此类无需重启实例即可恢复的异常。
+3. 驱动原因、用户程序内存溢出等原因导致的重启实例即可恢复的异常，这类情况在主机、GPU、操作系统正常稳定性范围内。
+4. 由于用户行为导致的系统依赖错误等，最终导致JupyterLab等无法访问。此类情况可重置系统恢复。
+5. 由于程序OOM导致的意外宕机，非硬件故障，用户可以自行重新开机实例。
+6. 按量计费实例开机时发现机器正在维护状态，此类情况等待机器维护完成后即可继续使用。如实例即将释放请联系客服申请延期。
+7. 其他非机器原因、平台原因导致的异常。

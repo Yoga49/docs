@@ -1,0 +1,65 @@
+---
+title: 'DeepSeek'
+description: 'DeepSeek调用示例'
+icon: 'comment-nodes'
+---
+
+## 调用说明
+
+- `API_KEY`请前往「大模型」->「[令牌管理](https://www.autodl.art/large-model/tokens)」页面获取
+
+- `model`请前往「[大模型](https://www.autodl.art/large-model/market)」页面复制model名称
+
+- OpenAI 请求端点：https://www.autodl.art/api/v1/
+
+<Note>以下调用以模型DeepSeek-V4-Pro为例</Note>
+
+### curl调用
+
+```Shell
+curl --location -g --request POST "https://www.autodl.art/api/v1/chat/completions" \
+--header "Authorization: Bearer $API_KEY" \
+--header "Content-Type: application/json" \
+--data-raw '{
+    "messages": [
+        {
+            "role": "user",
+            "content": "您好！"
+        }
+    ],
+    "model":"DeepSeek-V4-Pro",
+    "stream":true
+}'
+```
+
+### Python调用
+
+```Python
+# 如果没有安装OpenAI Python SDK，可使用命令安装：pip install OpenAI
+
+from openai import OpenAI
+
+# 初始化客户端
+client = OpenAI(
+    base_url="https://www.autodl.art/api/v1",
+    api_key="YOUR_API_KEY",
+)
+
+# 调用接口（这里使用了stream=True进行流式响应）
+stream = client.chat.completions.create(
+    model="DeepSeek-V4-Pro",
+    messages=[
+        {
+            "role": "user",
+            "content": "您好！"
+        }
+    ],
+    stream=True,
+)
+
+# 流式打印输出
+for chunk in stream:
+    if chunk.choices and chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content)
+```
+

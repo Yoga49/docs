@@ -1,59 +1,19 @@
 ---
 title: '代金券'
-description: 'Add image, video, and other HTML elements'
-icon: 'image'
+description: '代金券兑换与使用'
+icon: 'ticket'
 ---
 
-<img
-  style={{ borderRadius: '0.5rem' }}
-  src="https://mintlify-assets.b-cdn.net/bigbend.jpg"
-/>
+## 代金券兑换
 
-## Image
+兑换入口:「应用」->「钱包」->「兑换代金券」
 
-### Using Markdown
+![image-2026-07-21-11-30-52](/images/expense/image-2026-07-21-11-30-52.png)
 
-The [markdown syntax](https://www.markdownguide.org/basic-syntax/#images) lets you add images using the following code
+## 代金券使用
 
-```md
-![title](/path/image.jpg)
-```
+代金券会在计费时自动优化扣除，并不是在充值时抵扣充值金额。当代金券扣完后才会扣除账号余额。
 
-Note that the image file size must be less than 5MB. Otherwise, we recommend hosting on a service like [Cloudinary](https://cloudinary.com/) or [S3](https://aws.amazon.com/s3/). You can then use that URL and embed.
+如果不想自动扣除代金券，可以在 www.autodl.com ->「控制台」->「费用」->「代金券」里设置取消代金券自动抵扣消费。
 
-### Using embeds
-
-To get more customizability with images, you can also use [embeds](/writing-content/embed) to add images
-
-```html
-<img height="200" src="/path/image.jpg" />
-```
-
-## Embeds and HTML elements
-
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/4KzFe50RQkQ"
-  title="YouTube video player"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-  style={{ width: '100%', borderRadius: '0.5rem' }}
-></iframe>
-
-<br />
-
-<Tip>
-
-Mintlify supports [HTML tags in Markdown](https://www.markdownguide.org/basic-syntax/#html). This is helpful if you prefer HTML tags to Markdown syntax, and lets you create documentation with infinite flexibility.
-
-</Tip>
-
-### iFrames
-
-Loads another HTML page within the document. Most commonly used for embedding videos.
-
-```html
-<iframe src="https://www.youtube.com/embed/4KzFe50RQkQ"> </iframe>
-```
+![image_2026-05-15_163247_782](/images/expense/image_2026-05-15_163247_782.png)
